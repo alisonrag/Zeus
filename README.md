@@ -26,6 +26,12 @@ https://gitlab.com/4144/bpe/
 PacketDB is based in recvpackets.txt  
 Coming soon...  
 
+## Generating a new DLL
+1. Open `Zeus.sln`  with Visual Studio 2019
+2. Set Compilation to `Release` and `x86`
+3. Menu "Compilation" > Compilate Solution or `ctrl + shift + b`
+4. Dll will be createded at `release`folder
+
 ## Injecting into Ragnarok Client
 1. Copy the Zeus.dll to Ragnarok Folder
 2. Rename Zeus.dll to Zeus.asi
