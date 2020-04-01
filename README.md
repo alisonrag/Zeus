@@ -1,3 +1,7 @@
+![License](https://img.shields.io/github/license/alisonrag/Zeus)  
+![Language](https://img.shields.io/badge/language-C%2B%2B-blue)  
+![Contributors](https://img.shields.io/github/contributors/alisonrag/Zeus.svg)  
+
 # Zeus
  Zeus - Ragnarok Packet Logger
  
@@ -7,28 +11,27 @@
 ## Configuration
 You can configure the dll in `config.h` 
 
-`Connection_use_WS2 <true|false>` Use Winsock lib instead of Ragnarok CRagConnection Functions
-`DEBUG <true|false>` Enable / Disable Packet Dumper
+`Connection_use_WS2 <true|false>` Use Winsock lib instead of Ragnarok CRagConnection Functions  
+`DEBUG <true|false>` Enable / Disable Packet Dumper  
+`CRagConnection_instanceR_address 0XFFFFFFFF` CRagConnection_instanceR Hexadecimal Adresss  
+`CRagConnection_SendPacket_address 0XFFFFFFFF` CRagConnection_SendPacket Hexadecimal Adresss  
+`CRagConnection_RecvPacket_address 0XFFFFFFFF` CRagConnection_RecvPacket Hexadecimal  Adresss  
 
-`CRagConnection_instanceR_address 0XFFFFFFFF` CRagConnection_instanceR Hexadecimal Adresss
-`CRagConnection_SendPacket_address 0XFFFFFFFF` CRagConnection_SendPacket Hexadecimal Adresss
-`CRagConnection_RecvPacket_address 0XFFFFFFFF` CRagConnection_RecvPacket Hexadecimal  Adresss
- 
 ## Finding CRagConnection Adresses
- 1. Use BPE (`info.py`):
-https://gitlab.com/4144/bpe/
-2. Get it from output folder
+ 1. Use BPE (`info.py`):  
+https://gitlab.com/4144/bpe/  
+2. Get it from output folder  
 
 ## Updating PacketDB
-PacketDB is based in recvpackets.txt
-Coming soon... 
+PacketDB is based in recvpackets.txt  
+Coming soon...  
 
 ## Injecting into Ragnarok Client
 1. Copy the Zeus.dll to Ragnarok Folder
 2. Rename Zeus.dll to Zeus.asi
 3. Start Ragnarok
 
-Or use some DLL Injector (recommended):
+Or use some DLL Injector (recommended):  
 https://guidedhacking.com/resources/guided-hacking-dll-injector.4/
 
 ## Prints
