@@ -9,9 +9,9 @@ You can configure the dll in `config.h`
 
 `Connection_use_WS2 <true|false>` Use Winsock lib instead of Ragnarok CRagConnection Functions  
 `DEBUG <true|false>` Enable / Disable Packet Dumper  
-`CRagConnection_instanceR_address 0XFFFFFFFF` CRagConnection_instanceR Hexadecimal Adresss  
-`CRagConnection_SendPacket_address 0XFFFFFFFF` CRagConnection_SendPacket Hexadecimal Adresss  
-`CRagConnection_RecvPacket_address 0XFFFFFFFF` CRagConnection_RecvPacket Hexadecimal  Adresss  
+`CRagConnection_instanceR_address 0xFFFFFFFF` CRagConnection_instanceR Hexadecimal Adresss  
+`CRagConnection_SendPacket_address 0xFFFFFFFF` CRagConnection_SendPacket Hexadecimal Adresss  
+`CRagConnection_RecvPacket_address 0xFFFFFFFF` CRagConnection_RecvPacket Hexadecimal  Adresss  
 
 ## Finding CRagConnection Adresses
  1. Use BPE (`info.py`):  
