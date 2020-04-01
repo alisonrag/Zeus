@@ -1,7 +1,3 @@
-![License](https://img.shields.io/github/license/alisonrag/Zeus)  
-![Language](https://img.shields.io/badge/language-C%2B%2B-blue)  
-![Contributors](https://img.shields.io/github/contributors/alisonrag/Zeus.svg)  
-
 # Zeus
  Zeus - Ragnarok Packet Logger
  
@@ -29,8 +25,8 @@ Coming soon...
 ## Generating a new DLL
 1. Open `Zeus.sln`  with Visual Studio 2019
 2. Set Compilation to `Release` and `x86`
-3. Menu "Compilation" > Compilate Solution or `ctrl + shift + b`
-4. Dll will be createded at `release`folder
+3. Menu `Compilation` > `Compilate Solution` or `ctrl + shift + b`
+4. Dll will be created at `release`folder
 
 ## Injecting into Ragnarok Client
 1. Copy the Zeus.dll to Ragnarok Folder
@@ -45,3 +41,7 @@ https://guidedhacking.com/resources/guided-hacking-dll-injector.4/
 ![debugOFF](https://i.imgur.com/SWhk1IW.png)
 - Packet Logger (DEBUG ON):
 ![debugON](https://i.imgur.com/FV6rJbC.png)
+  
+![License](https://img.shields.io/github/license/alisonrag/Zeus)  
+![Language](https://img.shields.io/badge/language-C%2B%2B-blue)  
+![Contributors](https://img.shields.io/github/contributors/alisonrag/Zeus.svg)  
