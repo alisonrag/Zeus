@@ -156,6 +156,7 @@
     <ClInclude Include="Packet.h" />
     <ClInclude Include="PacketDB.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ROCodeBind.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />

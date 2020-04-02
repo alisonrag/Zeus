@@ -4,6 +4,7 @@
 // load headers
 #include "Packet.h"
 #include "PacketDB.h"
+#include "ROCodeBind.h"
 
 // load WinSock Lib
 #include <winsock2.h>
@@ -20,28 +21,14 @@ void hook();
 void parsePacket(char* buffer, int len, e_PacketType packet_type);
 void alloc_console();
 
-// int __thiscall CRagConnection_SendPacket(CRagConnection *this, size_t a2, void *a3)
-typedef int(__thiscall* originalSendPacket)(void* CragConnection, size_t size, char* buffer);
-originalSendPacket SendPacket;
-
-// int __thiscall CRagConnection_RecvPacket(CRagConnection* this, void* a2, int a3)
-typedef int(__thiscall* oiginalRecvPacket)(void* CragConnection, char* buffer, int size);
-oiginalRecvPacket RecvPacket;
-
-// void __stdcall CRagConnection_InstanceR()
-typedef void* (__stdcall* originalInstanceR)(void);
-originalInstanceR instanceR;
-
 // Fake Ws2_32 recv and send Functions
 extern "C" {
-    int(WINAPI* originalSend)(SOCKET s,
-        const char* buf, int len, int flags) = send;
+    int(WINAPI* originalSend)(SOCKET s, const char* buf, int len, int flags) = send;
     int(WINAPI* originalRecv)(SOCKET s, char* buf, int len, int flags) = recv;
 }
 
 // int (WINAPI* originalSend)
-int WINAPI hookedWinsocketSend(SOCKET s,
-    const char* buffer, int len, int flags) {
+int WINAPI hookedWinsocketSend(SOCKET s, const char* buffer, int len, int flags) {
     parsePacket((char*)buffer, len, e_PacketType::SENDED);
     return originalSend(s, buffer, len, flags);
 }
@@ -84,8 +71,19 @@ void parsePacket(char* buffer, int len, e_PacketType packet_type) {
     // check if packet ID is valid
     if (packet_id >= MIN_PACKET && packet_id <= MAX_PACKET) {
 
+        int packet_len;
+
         // get packet info (len)
-        int packet_len = packet_db[packet_id].len;
+        if (Connection_use_WS2) {
+            packet_len = packet_db[packet_id].len;
+        }
+        else {
+            packet_len = packet_db[packet_id].len;
+            // TODO: check getPacketSize args
+            //packet_len = getPacketSize(packet_id);
+            //std::cout << "packet len: " << packet_len << std::endl;
+           // return;
+        }
 
         if (packet_len == -1) { // if packet len = -1 means that the lenght is inside of the packet
             packet_len = (int) (buffer[2] & 0xFF) | (buffer[3] << 8);
@@ -162,6 +160,9 @@ void hook() {
 
         // Ragexe functions CRagConnection::instanceR
         instanceR = (originalInstanceR)(CRagConnection_instanceR_address);
+
+        // Ragexe functions CRagConnection::getPa
+        getPacketSize = (originalGetPacketSize)(CRagConnection_instanceR_address);
     }
 
     DetourTransactionCommit();
