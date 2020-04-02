@@ -1,21 +1,24 @@
 #pragma once
-struct s_packet_db {
-	short len;
-};
-
-// packet DB
-enum e_PacketDBVersion { 
-	MIN_PACKET_DB = 0x064,
-	MAX_PACKET_DB = 0xBFF,
-};
 
 // packets types
-enum class PacketTypes {
-	RECEIVED = 1,
-	SENDED = 2
+enum class e_PacketType {
+    RECEIVED = 1,
+    SENDED = 2
 };
 
-extern struct s_packet_db packet_db[MAX_PACKET_DB + 1];
-void show_packet();
-void initializeDB();
+class Packet {
+    //std::string name;
+    int ID;
+    int length;
+    char* content;
+    e_PacketType packetType;
 
+public:  
+    //string getName();
+    Packet(int cID, int clength, char* ccontent, e_PacketType cpacketType);
+    int getID();
+    int getLength();
+    char* getContent();
+    e_PacketType getPacketType();
+    void printPacket(bool debug);
+};
