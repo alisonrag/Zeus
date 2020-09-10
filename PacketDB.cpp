@@ -5,6 +5,7 @@ struct s_packet_db packet_db[MAX_PACKET + 1];
 
 // initialize packet_db
 void initializeDB() {
+
 	// Packet: 0x0437
 	packet_db[0x0437].len = 7;
 
@@ -1303,6 +1304,12 @@ void initializeDB() {
 
 	// Packet: 0x020e
 	packet_db[0x020e].len = 32;
+
+	// Packet: 0x020f
+	packet_db[0x020f].len = 10;
+
+	// Packet: 0x0210
+	packet_db[0x0210].len = 22;
 
 	// Packet: 0x0212
 	packet_db[0x0212].len = 26;
@@ -4578,4 +4585,3 @@ void initializeDB() {
 	packet_db[0x0b67].len = 32;
 
 }
-
