@@ -4577,5 +4577,79 @@ void initializeDB() {
 	// Packet: 0x0b67
 	packet_db[0x0b67].len = 32;
 
-}
+	// Packet: 0x0b68
+	packet_db[0x0b68].len = 12;
 
+	// Packet: 0x0b69
+	packet_db[0x0b69].len = 18;
+
+	// Packet: 0x0b6a
+	packet_db[0x0b6a].len = -1;
+
+	// Packet: 0x0b6b
+	packet_db[0x0b6b].len = 14;
+
+	// Packet: 0x0b6c
+	packet_db[0x0b6c].len = 12;
+
+	// Packet: 0x0b6d
+	packet_db[0x0b6d].len = 6;
+
+	// Packet: 0x0b6e
+	packet_db[0x0b6e].len = 14;
+
+	// Packet: 0x0b6f
+	packet_db[0x0b6f].len = 177;
+
+	// Packet: 0x0b70
+	packet_db[0x0b70].len = -1;
+
+	// Packet: 0x0b71
+	packet_db[0x0b71].len = 177;
+
+	// Packet: 0x0b72
+	packet_db[0x0b72].len = -1;
+
+	// Packet: 0x0b73
+	packet_db[0x0b73].len = 8;
+
+	// Packet: 0x0b74
+	packet_db[0x0b74].len = 1026;
+
+	// Packet: 0x0b75
+	packet_db[0x0b75].len = 1026;
+
+	// Packet: 0x0b76
+	packet_db[0x0b76].len = 77;
+
+	// Packet: 0x0b77
+	packet_db[0x0b77].len = -1;
+
+	// Packet: 0x0b78
+	packet_db[0x0b78].len = -1;
+
+	// Packet: 0x0b79
+	packet_db[0x0b79].len = -1;
+
+	// Packet: 0x0b7a
+	packet_db[0x0b7a].len = -1;
+
+	// Packet: 0x0b7b
+	packet_db[0x0b7b].len = 118;
+
+	// Packet: 0x0b7c
+	packet_db[0x0b7c].len = -1;
+
+	// Packet: 0x0b7d
+	packet_db[0x0b7d].len = -1;
+
+	// Packet: 0x0b7e
+	packet_db[0x0b7e].len = 60;
+
+	// Packet: 0x0b7f
+	packet_db[0x0b7f].len = 10;
+
+	// Packet: 0x0b80
+	packet_db[0x0b80].len = 10;
+
+}
