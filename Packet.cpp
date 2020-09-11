@@ -1,6 +1,5 @@
-#include "pch.h"
-
-#include "Packet.h"
+#include "pch.hpp"
+#include "Packet.hpp"
 
 //string getName() {
     //return name;
