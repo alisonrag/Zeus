@@ -1,5 +1,5 @@
-#include "pch.h"
-#include "PacketDB.h"
+#include "pch.hpp"
+#include "PacketDB.hpp"
 
 struct s_packet_db packet_db[MAX_PACKET + 1];
 

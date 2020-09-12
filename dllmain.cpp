@@ -1,10 +1,10 @@
 // dllmain.cpp : Define the DLL Entry Point.
-#include "pch.h"
+#include "pch.hpp"
 
 // load headers
-#include "Packet.h"
-#include "PacketDB.h"
-#include "ROCodeBind.h"
+#include "Packet.hpp"
+#include "PacketDB.hpp"
+#include "ROCodeBind.hpp"
 
 // load WinSock Lib
 #include <winsock2.h>
