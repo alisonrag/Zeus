@@ -155,18 +155,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="config.hpp" />
-    <ClInclude Include="framework.hpp" />
-    <ClInclude Include="Packet.hpp" />
-    <ClInclude Include="PacketDB.hpp" />
-    <ClInclude Include="pch.hpp" />
-    <ClInclude Include="ROCodeBind.hpp" />
+    <ClInclude Include="src\config.hpp" />
+    <ClInclude Include="src\framework.hpp" />
+    <ClInclude Include="src\Packet.hpp" />
+    <ClInclude Include="src\PacketDB.hpp" />
+    <ClInclude Include="src\pch.hpp" />
+    <ClInclude Include="src\ROCodeBind.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Packet.cpp" />
-    <ClCompile Include="PacketDB.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\Packet.cpp" />
+    <ClCompile Include="src\PacketDB.cpp" />
+    <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -174,7 +174,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="src\packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
