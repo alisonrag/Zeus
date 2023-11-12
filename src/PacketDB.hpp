@@ -5,7 +5,7 @@ struct s_packet_db {
 
 enum e_PacketDBVersion {
     MIN_PACKET = 0x064,
-    MAX_PACKET = 0xBFF,
+    MAX_PACKET = 0xCFF,
 };
 
 extern struct s_packet_db packet_db[MAX_PACKET + 1];

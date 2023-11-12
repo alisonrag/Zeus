@@ -14,6 +14,8 @@
 #include "detours.h"
 #pragma comment(lib, "detours.lib")
 
+#include <ws2tcpip.h>
+
 HMODULE hModule;
 
 // pre declare the functions
@@ -25,10 +27,19 @@ void alloc_console();
 extern "C" {
     int(WINAPI* originalSend)(SOCKET s, const char* buf, int len, int flags) = send;
     int(WINAPI* originalRecv)(SOCKET s, char* buf, int len, int flags) = recv;
+    __declspec(dllexport) void init();
 }
+void init();
+void init() {
 
+}
 // int (WINAPI* originalSend)
 int WINAPI hookedWinsocketSend(SOCKET s, const char* buffer, int len, int flags) {
+    int packet_id = (buffer[0] & 0xFF) | (buffer[1] << 8);
+    // print hexadecimal packet ID
+    std::cout << "Sent" << ": 0x" << std::hex << std::setw(4) << std::setfill('0') << packet_id << "\t";
+    std::cout << std::dec;
+    std::cout << "len: " << len << "\n";
     parsePacket((char*)buffer, len, e_PacketType::SENDED);
     return originalSend(s, buffer, len, flags);
 }
@@ -37,13 +48,19 @@ int WINAPI hookedWinsocketSend(SOCKET s, const char* buffer, int len, int flags)
 int WINAPI hookedWinsocketRecv(SOCKET socket, char* buffer, int len, int flags) {
     int ret_len = originalRecv(socket, buffer, len, flags);
 
-    if (ret_len != SOCKET_ERROR) {
-        parsePacket(buffer, ret_len, e_PacketType::RECEIVED);
-        return ret_len;
+    if (ret_len != SOCKET_ERROR && ret_len > 0) {
+        struct sockaddr_in sin;
+        socklen_t len = sizeof(sin);
+        if (getpeername(socket, (struct sockaddr*)&sin, &len) == -1) {
+            perror("getpeername");
+        }
+        else {
+            if (ntohs(sin.sin_port) != 80 && ntohs(sin.sin_port) != 7273) {
+                parsePacket(buffer, ret_len, e_PacketType::RECEIVED);
+            }
+        }
     }
-
     return ret_len;
-
 }
 
 // CRagConnection::RecvPacket
@@ -74,8 +91,8 @@ void parsePacket(char* buffer, int len, e_PacketType packet_type) {
         int packet_len;
 
         // get packet info (len)
-        if (Connection_use_WS2) {
-            packet_len = packet_db[packet_id].len;
+        if (Connection_use_WS2 && packet_type == e_PacketType::SENDED) {
+            packet_len = len;
         }
         else {
             packet_len = packet_db[packet_id].len;
@@ -90,7 +107,7 @@ void parsePacket(char* buffer, int len, e_PacketType packet_type) {
         }
 
         if (packet_len <= 0) {
-            return;
+            packet_len = len;
         }
 
         // check if there is more then 1 packet in buffer
